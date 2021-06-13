@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'states'], function () {
+	Route::get('/', 'StateController@index');
+	Route::get('store', 'StateController@store');
+});
+
+Route::group(['prefix' => 'districts'], function () {
+	Route::get('store', 'DistrictController@store');
+});
