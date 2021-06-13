@@ -11,6 +11,7 @@ class StateController extends Controller
 {
 	public function index()
 	{
+print_r("here");die;
 		$states = State::get()->toArray();
 		return view('states', compact('states'));
 	}
