@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Artisan;
 use App\State;
+use Illuminate\Http\Request;
 
 class StateController extends Controller
 {
