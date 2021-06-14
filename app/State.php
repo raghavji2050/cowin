@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
-    protected $guarded = [];
+    protected $guarded   = [];
 	public $incrementing = false;
-
-	public $with = ['districts'];
+	public $timestamps   = false;
+	public $with         = ['districts'];
 
 	public function districts()
 	{

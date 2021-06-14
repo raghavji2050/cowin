@@ -20,7 +20,6 @@ class CreateDistrictsTable extends Migration
 				  ->onDelete('cascade')
 				  ->onUpdate('cascade');
 			$table->text('name');
-            $table->timestamps();
         });
     }
 

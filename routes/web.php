@@ -17,11 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'states'], function () {
-	Route::get('/', 'StateController@index');
+Route::name('states.')->prefix('states')->group(function () {
+	Route::get('/', 'StateController@index')->name('index');
 	Route::get('store', 'StateController@store');
 });
 
 Route::group(['prefix' => 'districts'], function () {
 	Route::get('store', 'DistrictController@store');
+});
+
+Route::name('sessions.')->prefix('sessions')->group(function () {
+	Route::get('/', 'SessionController@index')->name('index');
+	Route::get('store', 'SessionController@store');
 });
