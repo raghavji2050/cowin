@@ -10,4 +10,9 @@ class Session extends Model
 	protected $casts = [
 		'slots' => 'array'
 	];
+
+	public function center()
+	{
+		return $this->belongsTo(Center::class);
+	}
 }

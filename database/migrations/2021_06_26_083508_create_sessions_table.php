@@ -15,17 +15,10 @@ class CreateSessionsTable extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
-			$table->foreignId('district_id')
+			$table->foreignId('center_id')
 				  ->constrained()
 				  ->onDelete('cascade')
 				  ->onUpdate('cascade');
-			$table->integer('center_id');
-			$table->string('name')->nullable();
-			$table->longText('address')->nullable();
-			$table->string('state_name')->nullable();
-			$table->longText('district_name')->nullable();
-			$table->longText('block_name')->nullable();
-			$table->integer('pincode')->nullable();
 			$table->string('from')->nullable();
 			$table->string('to')->nullable();
 			$table->string('lat')->nullable();

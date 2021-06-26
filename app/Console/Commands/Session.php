@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use GuzzleHttp\Client;
 use App\Session as SessionModel;
 use App\District;
+use App\Center;
 
 class Session extends Command
 {
@@ -42,7 +43,7 @@ class Session extends Command
      */
     public function handle()
     {
-        $districts = District::all();
+        $districts = District::orderByDesc('id')->get();
 
 		foreach ($districts as $district) {
 			$this->storeSessions($district->id);
@@ -70,18 +71,21 @@ class Session extends Command
 			
 			if (isset($response['sessions'])) {
 				foreach($response['sessions'] as $session) {
-					
-					SessionModel::updateOrCreate([
-						'center_id' => $session['center_id'],
-						'date' 		=> $session['date'],
-					], [
+
+					$center = Center::updateOrCreate([
+						'id'		  => $session['center_id'],
 						'district_id' => $districtId,
+					], [
 						'name' 		  => $session['name'] ?? null,
 						'address' 	  => $session['address'] ?? null,
-						'state_name'  => $session['state_name'] ?? null,
-						'district_name' => $session['district_name'] ?? null,
 						'block_name' 	=> $session['block_name'] ?? null,
 						'pincode' 		=> $session['pincode'] ?? null,
+					]);
+					
+					SessionModel::updateOrCreate([
+						'center_id' => $center->id,
+						'date' 		=> $session['date'],
+					], [
 						'from' 		  	=> $session['from'] ?? null,
 						'to' 		 	=> $session['to'] ?? null,
 						'lat' 		  	=> $session['lat'] ?? null,

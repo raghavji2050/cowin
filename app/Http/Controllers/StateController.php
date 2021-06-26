@@ -11,7 +11,7 @@ class StateController extends Controller
 {
 	public function index()
 	{
-		$states = State::get()->toArray();
+		$states = State::with('districts')->get()->toArray();
 
 		return view('states', compact('states'));
 	}
@@ -19,5 +19,7 @@ class StateController extends Controller
     public function store(Request $request)
 	{
 		Artisan::call('save:states');
+
+		return redirect()->route('states.index');
 	}
 }

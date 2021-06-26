@@ -17,5 +17,7 @@ class SessionController extends Controller
     public function store(Request $request)
 	{
 		Artisan::call('save:sessions');
+
+		return redirect()->route('sessions.index');
 	}
 }

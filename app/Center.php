@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class State extends Model
+class Center extends Model
 {
-    protected $guarded   = [];
+    protected $guarded 	 = [];
 	public $incrementing = false;
 	public $timestamps   = false;
 
-	public function districts()
+	public function sessions()
 	{
-		return $this->hasMany(District::class);
+		return $this->hasMany(Session::class);
 	}
 }

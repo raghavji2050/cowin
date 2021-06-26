@@ -30,3 +30,8 @@ Route::name('sessions.')->prefix('sessions')->group(function () {
 	Route::get('/', 'SessionController@index')->name('index');
 	Route::get('store', 'SessionController@store');
 });
+
+Route::name('centers.')->prefix('centers')->group(function () {
+	Route::get('/', 'CenterController@index')->name('index');
+});
+

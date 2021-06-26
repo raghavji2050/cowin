@@ -9,12 +9,6 @@
 				  <th scope="col">Session Id</th>
 				  <th scope="col">Date</th>
 				  <th scope="col">Center Id</th>
-				  <th scope="col">Name</th>
-				  <th scope="col">address</th>
-				  <th scope="col">state_name</th>
-				  <th scope="col">district_name</th>
-				  <th scope="col">block_name</th>
-				  <th scope="col">pincode</th>
 				  <th scope="col">from</th>
 				  <th scope="col">to</th>
 				  <th scope="col">lat</th>
@@ -37,27 +31,6 @@
 						</th>
 						<th>
 							{{ $session->date }}
-						</th>
-						<th>
-							{{ $session->center_id }}
-						</th>
-						<th>
-							{{ $session->name }}
-						</th>
-						<th>
-							{{ $session->address }}
-						</th>
-						<th>
-							{{ $session->state_name }}
-						</th>
-						<th>
-							{{ $session->district_name }}
-						</th>
-						<th>
-							{{ $session->block_name }}
-						</th>
-						<th>
-							{{ $session->pincode }}
 						</th>
 						<th>
 							{{ $session->from }}
