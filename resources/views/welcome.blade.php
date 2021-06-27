@@ -23,7 +23,7 @@
 
 				<div class="links">
 					<a href="{{ route('states.index') }}">States</a>
-                    <a href="{{ route('centers.index') }}">States</a>
+                    <a href="{{ route('centers.index') }}">Centers</a>
 					<a href="{{ route('sessions.index') }}">Sessions</a>
 				</div>
             </div>

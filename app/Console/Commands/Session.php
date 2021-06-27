@@ -43,7 +43,7 @@ class Session extends Command
      */
     public function handle()
     {
-        $districts = District::orderByDesc('name')->get();
+        $districts = District::orderBy('id')->offset(0)->limit(1000)->get();
 
 		foreach ($districts as $district) {
 			$this->storeSessions($district->id);

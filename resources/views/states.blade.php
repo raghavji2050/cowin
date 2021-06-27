@@ -12,7 +12,7 @@
 			</tr>
 		  </thead>
 		  <tbody>
-			@foreach($states as $state)
+			@forelse($states as $state)
 				<tr>
 					<th>
 						{{ $state['id'] }}
@@ -24,10 +24,21 @@
 						{{ count($state['districts']) }}
 					</th>
 					<th>
-						{!! implode(", <br>", array_column($state['districts'], 'name')) !!}
+						@foreach($state['districts'] as $district)
+							<a href="{{ route('centers.index', ['district' => $district['id']]) }}">
+								{{ $district['name'] }}
+							</a>
+							<br>
+						@endforeach
 					</th>
 				</tr>
-			@endforeach
+			@empty
+				<tr >
+					<th colspan="6" class="text-center">
+						No data found
+					</th>
+				</tr>
+			@endforelse
 		  </tbody>
 		</table>
 	</div>

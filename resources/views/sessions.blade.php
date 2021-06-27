@@ -9,6 +9,7 @@
 				  <th scope="col">Session Id</th>
 				  <th scope="col">Date</th>
 				  <th scope="col">Center Id</th>
+				  <th scope="col">Center Name</th>
 				  <th scope="col">from</th>
 				  <th scope="col">to</th>
 				  <th scope="col">lat</th>
@@ -24,13 +25,19 @@
 				</tr>
 			  </thead>
 			  <tbody>
-				@foreach($sessions as $session)
+				@forelse($sessions as $session)
 					<tr>
 						<th>
 							{{ $session->session_id }}
 						</th>
 						<th>
 							{{ $session->date }}
+						</th>
+						<th>
+							{{ $session->center_id }}
+						</th>
+						<th>
+							{{ $session->center_name }}
 						</th>
 						<th>
 							{{ $session->from }}
@@ -69,10 +76,16 @@
 							{!! implode(", <br>", $session->slots) !!}
 						</th>
 					</tr>
-				@endforeach
+				@empty
+					<tr >
+						<th colspan="6" class="text-center">
+							No data found
+						</th>
+					</tr>
+				@endforelse
 			  </tbody>
 			</table>
 		</div>
-	{{ $sessions->links() }}
+	{{ $sessions->appends(['center' => request()->center])->links() }}
 	</div>
 @endsection
