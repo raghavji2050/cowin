@@ -17,9 +17,9 @@ class CenterController extends Controller
 							$query->where('districts.id', $request->district);
 						})
 						->where('districts.id', $request->district)
-						->groupBy('block_name')
 						->orderBy('districts.name')
-						->get();
+						->get()
+						->groupBy('block_name');
 
 		$centers = Center::join('districts', 'districts.id', 'centers.district_id')->select('districts.*', 'centers.*', 'districts.name as district_name')
 						->when($request->district, function ($query) use ($request) {
