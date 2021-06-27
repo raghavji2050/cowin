@@ -12,9 +12,10 @@ class SessionController extends Controller
 {
 	public function index(Request $request)
 	{
-		$sessions = Session::when($request->center, function ($query) use ($request) {
+		/*$sessions = Session::when($request->center, function ($query) use ($request) {
 								$query->where('centers.id', $request->center);
-							})->join('centers', 'sessions.center_id', 'centers.id')->select('centers.*', 'sessions.*', 'centers.name as center_name')->paginate(10);
+							})->join('centers', 'sessions.center_id', 'centers.id')->select('centers.*', 'sessions.*', 'centers.name as center_name')->paginate(10);*/
+$sessions = Session::join('centers', 'sessions.center_id', 'centers.id')->select('centers.*', 'sessions.*', 'centers.name as center_name')->paginate(10);
 
 		return view('sessions', compact('sessions'));
 	}
