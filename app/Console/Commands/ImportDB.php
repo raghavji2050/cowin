@@ -48,7 +48,6 @@ class ImportDB extends Command
         ];
 
         foreach($tables as $table) {
-            DB::connection('pgsql')->statement('SET FOREIGN_KEY_CHECKS=0;');
             DB::connection('pgsql')->table($table)->truncate();
 
             print_r($table);
@@ -58,7 +57,6 @@ class ImportDB extends Command
                 DB::connection('pgsql')->table('states')->insert((array) $data);
             }
 
-            DB::connection('pgsql')->statement('SET FOREIGN_KEY_CHECKS=1;');
         }
 
     }
