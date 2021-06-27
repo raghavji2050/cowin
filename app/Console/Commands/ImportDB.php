@@ -38,8 +38,6 @@ class ImportDB extends Command
      */
     public function handle()
     {
-        $local_database = DB::connection('mysql');
-
         $tables = [
             'states',
             'districts',
@@ -48,16 +46,16 @@ class ImportDB extends Command
         ];
 
         foreach($tables as $table) {
-            DB::connection('pgsql')->table($table)->truncate();
+            DB::table($table)->truncate();
+            $datas = config($table);
+            print_r($datas);
 
-            print_r($table);
-           
-            foreach($local_database->table('states')->get() as $data) {
-                print_r($data);
-                DB::connection('pgsql')->table('states')->insert((array) $data);
+            if ($datas) {
+                foreach($datas as $data) {
+                    print_r($data);
+                    DB::table($table)->insert($data);
+                }
             }
-
         }
-
     }
 }
